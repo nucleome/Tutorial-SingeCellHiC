@@ -7,13 +7,19 @@ We also provide a list of demo data and configuration file under the folder name
 You can jump to the section named **Starting the data service with demo data** if you just want to know how to set up a local data service in your computer and visualize tracks on Nucleome Browser. 
 
 ## Table of Contents
-[Requirements](#requirements)
-[Getting data from GEO (Linux and macOS](#getdata)
-[Pre-processing of ChIP-seq peaks](#preprocessing_chip)
-[Pre-processing of population Hi-C and single-cell Hi-C data](#preprocessing_hic)
-[Starting data service](#start_data)
-[Starting data service using the demo data](#start_demo)
-[Citation&Referene](#others)
+1. [Requirements](#requirements)
+
+2. [Getting data from GEO (Linux and macOS](#getdata)
+
+3. [Pre-processing of ChIP-seq peaks](#preprocessing_chip)
+
+4. [Pre-processing of population Hi-C and single-cell Hi-C data](#preprocessing_hic)
+
+5. [Starting data service](#start_data)
+
+6. [Starting data service using the demo data](#start_demo)
+
+7. [Citation&Referene](#others)
 
 <a name="requirements"/>
 ## Requirements
