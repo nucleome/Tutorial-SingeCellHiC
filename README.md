@@ -1,15 +1,16 @@
 # Building a custom data service - An example using single-cell Hi-C data
 
 This tutorial will show you how to set up a custom Nucleome Browser session.
-You will learn how to pre-processe publised data (e.g., population Hi-C and single-cell Hi-C from Stevens et al. 2017) and lauch a local genomic data service and local 3D genome structure service for visualization in Nucleome Browser.
-You can follow this tutorial by cloning this repo. 
+You will learn how to pre-processe publised data (e.g., population Hi-C and single-cell Hi-C from Stevens et al. 2017).
+Then you will learn how to lauch a local data service for visualization custom tracks in Nucleome Browser.
 We also provide a list of demo data and configuration file under the folder named `demo_data`
 You can jump to the section named [Starting the data service with demo data](#start_demo) if you just want to know how to set up a local data service in your computer and visualize tracks on Nucleome Browser. 
+
 
 ## Table of Contents
 1. [Requirements](#requirements)
 
-2. [Getting data from GEO (Linux and macOS](#getdata)
+2. [Getting data from GEO (Linux and macOS)](#getdata)
 
 3. [Pre-processing of ChIP-seq peaks](#preprocessing_chip)
 
@@ -25,30 +26,36 @@ You can jump to the section named [Starting the data service with demo data](#st
 <a name="requirements"/>
 
 ## Requirements
-To follow the steps in this tutorial you will need to prepare a laptop or desktop on Linux or macOS.
+To start with, you will need to prepare a laptop or desktop on Linux or macOS and clone this repo to your machine.
 You will also need to pre-install the following software packages/tools for different operating systems.
 
-> Tips: For Windows machine, you need to install Windows Subsytem for Linux to pre-process the data.
+> Tips: For Windows machine, you need to install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) to pre-process the data.
 However, you can start the data service with demo data without the linux subsystem. 
-You can go the section named **Starting the data service with demo data** to see video tutorial on Windows machine.
+You can go the section named [Starting the data service with demo data](#start_demo) to see video tutorial on Windows machine.
 
-### Linux (tested under Ubuntu 20.04.4 LTS)
+### Linux (tested under Ubuntu 20.04/18.04 LTS)
+- terminal
 - gzip 
 - tar
 - awk (mawk/gawk should also work)
 - sed
 - Juicer Tools ([https://github.com/aidenlab/juicer/wiki/Download](https://github.com/aidenlab/juicer/wiki/Download)), this tutorial is tested under Juicer Tool version 1.22.01
-- fetchChromSizes and bedToBigBed (you can install these binaries built from [http://hgdownload.cse.ucsc.edu/admin/exe/](http://hgdownload.cse.ucsc.edu/admin/exe/) 
+- fetchChromSizes and bedToBigBed (you can install these binaries built from [http://hgdownload.cse.ucsc.edu/admin/exe/](http://hgdownload.cse.ucsc.edu/admin/exe/), we also provided them in the `scripts` folder (e.g., `UCSC_Linux`)
 - nucleserver ([https://github.com/nucleome/nucleserver](https://github.com/nucleome/nucleserver)), this tutorial is tested under nucleserver version 0.2.6
 
+Most of tools except for the Juicer Tools, fetchChromSizes, and bedToBigBed should be pre-installed for most Linux distributions. 
+
 ### macOS (tested under macOS 12 (Monterey))
+- terminal 
 - gzip 
 - tar
 - gawk 
 - sed
 - Juicer Tools ([https://github.com/aidenlab/juicer/wiki/Download](https://github.com/aidenlab/juicer/wiki/Download)), this tutorial is tested under Juicer Tool version 1.22.01
-- fetchChromSizes and bedToBigBed (you can install these binaries built from [http://hgdownload.cse.ucsc.edu/admin/exe/](http://hgdownload.cse.ucsc.edu/admin/exe/) 
+- fetchChromSizes and bedToBigBed (you can install these binaries built from [http://hgdownload.cse.ucsc.edu/admin/exe/](http://hgdownload.cse.ucsc.edu/admin/exe/), we also provided them in the `scripts` folder (e.g., `UCSC_Linux`)
 - nucleserver ([https://github.com/nucleome/nucleserver](https://github.com/nucleome/nucleserver)), this tutorial is tested under nucleserver version 0.2.6
+
+> Tips: In macOS, you can open termial by clicking the Lauchpad icon in the Dock, typing terminal in the search field, then click `Teriminal`.
 
 <a name="getdata"/>
 
