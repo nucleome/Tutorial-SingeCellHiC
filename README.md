@@ -21,7 +21,9 @@ You can jump to the section named **Starting the data service with demo data** i
 
 7. [Citation&Referene](#others)
 
+
 <a name="requirements"/>
+
 ## Requirements
 To follow the steps in this tutorial you will need to prepare a laptop or desktop on Linux or macOS.
 You will also need to pre-install the following software packages/tools for different operating systems.
@@ -49,6 +51,7 @@ You can go the section named **Starting the data service with demo data** to see
 - nucleserver ([https://github.com/nucleome/nucleserver](https://github.com/nucleome/nucleserver)), this tutorial is tested under nucleserver version 0.2.6
 
 <a name="getdata"/>
+
 ## Getting data from GEO (Linux and macOS)
 First, Open terminal in Linux or macOS.
 Then, create a new folder ans use `wget` command to download the whole dataset from GEO to a local computer and named it `GSE80280_RAW.tar` as shown below: 
@@ -77,6 +80,7 @@ You should see multiple files in different formats with various suffixes, such a
 ![list of files after uncompression](./asset/figure_list_file.png)
 
 <a name="preprocessing_chip"/>
+
 ## Pre-processing of ChIP-seq peaks
 In order to launch data service and visualize these data in Nucleome Browser, you need to pre-process data and convert them into standard formats (e.g., bigBed and bigWig file) supported by Nucleome Browser. 
 You can do that using the tools fetchChromSizes and bedToBigBed provided from the UCSC Genome Browser and Blat application binaries built ([http://hgdownload.cse.ucsc.edu/admin/exe](http://hgdownload.cse.ucsc.edu/admin/exe/)) as shown below.
@@ -110,6 +114,7 @@ done
 ```
 
 <a name="preprocessing_hic"/>
+
 ## Pre-processing of population Hi-C and single-cell Hi-C data
 The Hi-C contact maps must be transformed into .hic format in order to display in Nucleome Browser. 
 Here we suggest using Juicer tools ([https://github.com/aidenlab/juicer](https://github.com/aidenlab/juicer)) to create .hic files from the downloaded contact pair files. 
@@ -152,6 +157,7 @@ Note that this script can only apply to this specific dataset, and can not be us
 ```
 
 <a name="start_data"/>
+
 ## Starting data service 
 
 Now, you should have prepared all the data for visualization in Nucleome Browser.
@@ -229,6 +235,7 @@ Then, you can create a new 3D structure panel in the Nucleome Browser and copy t
 ![Add new 3D data](./asset/3d_data_service.png)
 
 <a name="start_demo"/>
+
 ## Starting data service using the demo data
 We have provided a demo data set (only Hi-C data on chromosome 19 is included to reduce data size) and corresponding excel configuration file to directly launch a local data service and explore features in Nucleome Browser.
 
@@ -273,6 +280,7 @@ You can also see the following video tutorials for different operating systems.
 ### macOS machine video tutorial
 
 <a name="others"/>
+
 ## Citation
 
 ## Reference 
