@@ -55,13 +55,13 @@ Most of tools except for the Juicer Tools, fetchChromSizes, and bedToBigBed shou
 - fetchChromSizes and bedToBigBed (you can install these binaries built from [http://hgdownload.cse.ucsc.edu/admin/exe/](http://hgdownload.cse.ucsc.edu/admin/exe/), we also provided them in the `scripts` folder (e.g., `UCSC_Linux`)
 - nucleserver ([https://github.com/nucleome/nucleserver](https://github.com/nucleome/nucleserver)), this tutorial is tested under nucleserver version 0.2.6
 
-> Tips: In macOS, you can open termial by clicking the Lauchpad icon in the Dock, typing terminal in the search field, then click `Teriminal`.
+> Tips: In macOS, you can open terminal by clicking the Launchpad icon in the Dock, typing terminal in the search field, then click `Terminal`.
 
 <a name="getdata"/>
 
 ## Getting data from GEO (Linux and macOS)
-First, Open terminal in Linux or macOS.
-Then, create a new folder ans use `wget` command to download the whole dataset from GEO to a local computer and named it `GSE80280_RAW.tar` as shown below: 
+First, open terminal in Linux or macOS.
+Then, create a new folder and use `wget` command to download the whole dataset from GEO to a local computer and named it `GSE80280_RAW.tar` as shown below: 
 
 ```
 # create a new folder
@@ -82,14 +82,14 @@ gzip -d *.gz
 
 You should see multiple files in different formats with various suffixes, such as .bed, .pdb, etc as shown below.
 
-> Warning: Note that the folder will take about 43Gb after uncompression. 
+> Warning: Note that the folder will take about 43Gb after decompression. 
 
 ![list of files after uncompression](./asset/figure_list_file.png)
 
 <a name="preprocessing_chip"/>
 
 ## Pre-processing of ChIP-seq peaks
-In order to launch data service and visualize these data in Nucleome Browser, you need to pre-process data and convert them into standard formats (e.g., bigBed and bigWig file) supported by Nucleome Browser. 
+In order to launch data service and visualize ChIP-seq peaks in Nucleome Browser, you need to pre-process data and convert them into standard formats (e.g., bigBed and bigWig file) supported by Nucleome Browser. 
 You can do that using the tools fetchChromSizes and bedToBigBed provided from the UCSC Genome Browser and Blat application binaries built ([http://hgdownload.cse.ucsc.edu/admin/exe](http://hgdownload.cse.ucsc.edu/admin/exe/)) as shown below.
 We also provide binary executables inside the *script* folder.
 
@@ -138,7 +138,7 @@ To do that, the Hi-C contact pair file should be first converted into one of the
 
 We provide customized script named `create_single_cell_HiC.sh` to convert population/single-cell Hi-C contact pairs to .hic files as shown below:
 
-> Tips: you may need to make `create_single_cell_HiC.sh` excecutable using `chmod +x scripts/create_single_cell_HiC.sh`.
+> Tips: you may need to make `create_single_cell_HiC.sh` executable using `chmod +x scripts/create_single_cell_HiC.sh`.
 
 ```
 # Single cell Hi-C
@@ -148,7 +148,7 @@ We provide customized script named `create_single_cell_HiC.sh` to convert popula
 ./scripts/create_population_HiC.sh GSM2123564_Haploid_mESC_population_hic.txt population_hic /path_to_juicer_tools/juicer_tools.jar
 ```
 
-> Tips: These two scripts also require an additional file called `chr_order` which specifies the list of chromosomes ID. We also provide this file in this repo.
+> Tips: These two scripts also require an additional file called `chr_order`, which specifies the list of chromosomes ID. We also provide this file in this repo.
 
 ## Pre-processing of 3D genome structures
 The 3D genome structures for single cells are provided in pdb format, and you will need to convert them into nucle3d ([https://github.com/nucleome/nucle3d](https://github.com/nucleome/nucle3d)) format.
@@ -173,11 +173,11 @@ You will also need a cross-platform tool called nucleserver ([https://github.com
 You can read more about how to use nucleserver through the GitHub link ([https://github.com/nucleome/nucleserver](https://github.com/nucleome/nucleserver)).
 Here, we will briefly introduce how to use it for this tutorial.
 
-Suppose you have put all generated files under a folder named `NB_single_cell`
-First, you need to create an Excel file (we have tested this using the LibreOffice software in Linux). 
+Suppose you have put all generated files under a folder named `NB_single_cell`.
+First, you need to create an Excel file (we have tested this using the LibreOffice software in Linux and ). 
 Create a new sheet called `Config` and put the following information inside this sheet as the figure shown below.
 The first row is a header of this sheet.
-The second row specifies the complete path of the folder
+The second row specifies the complete path of the folder.
 You should replace the path with the real path based on your computer.
 
 ![Config sheet](./asset/configuration_config_sheet.png)
@@ -229,9 +229,10 @@ The HTTP version will not work due to the limitation of CORS restriction.
 
 To add the 3D structure to Nucleome Browser, you also need to start a local data service.
 You can use any file server to host nucle3D files but we also provide a simple one in nucleserver.
-You can start a file server to host 3D genome structure models using the following command
+You can start a file server to host 3D genome structure models using the following command.
 
 ```
+# Start a file server to host 3D genome structure models
 ./script/nucleserver file --root NB_single_cell/3d/ --port 8612
 ```
 
@@ -245,6 +246,11 @@ Then, you can create a new 3D structure panel in the Nucleome Browser and copy t
 
 ## Starting data service using the demo data
 We have provided a demo data set (only Hi-C data on chromosome 19 is included to reduce data size) and corresponding excel configuration file to directly launch a local data service and explore features in Nucleome Browser.
+
+You can see the following video tutorials for different operating systems and the below text version for reference.
+
+- Linux machine video tutorial ()
+- macOS machine video tutorial ()
 
 First, you need to open a terminal in Linux or macOS and get the complete path of the current folder.
 In Linux and macOS, this can be done using the `pwd` command. 
@@ -279,12 +285,6 @@ Then, you can create a new 3D structure panel in the Nucleome Browser and copy t
 ![Add new 3D data](./asset/3d_data_service.png)
 
 Note that you need to go to chromosome 19 as only this chromosome has Hi-C contact map data.
-
-You can also see the following video tutorials for different operating systems.
-
-### Linux machine video tutorial
-
-### macOS machine video tutorial
 
 <a name="others"/>
 
