@@ -6,11 +6,21 @@ You can follow this tutorial by cloning this repo.
 We also provide a list of demo data and configuration file under the folder named `demo_data`
 You can jump to the section named **Starting the data service with demo data** if you just want to know how to set up a local data service in your computer and visualize tracks on Nucleome Browser. 
 
+## Table of Contents
+[Requirements](#requirements)
+[Getting data from GEO (Linux and macOS](#getdata)
+[Pre-processing of ChIP-seq peaks](#preprocessing_chip)
+[Pre-processing of population Hi-C and single-cell Hi-C data](#preprocessing_hic)
+[Starting data service](#start_data)
+[Starting data service using the demo data](#start_demo)
+[Citation&Referene](#others)
+
+<a name="requirements"/>
 ## Requirements
 To follow the steps in this tutorial you will need to prepare a laptop or desktop on Linux or macOS.
 You will also need to pre-install the following software packages/tools for different operating systems.
 
-Tips: For Windows machine, you need to install Windows Subsytem for Linux to pre-process the data.
+> Tips: For Windows machine, you need to install Windows Subsytem for Linux to pre-process the data.
 However, you can start the data service with demo data without the linux subsystem. 
 You can go the section named **Starting the data service with demo data** to see video tutorial on Windows machine.
 
@@ -32,6 +42,7 @@ You can go the section named **Starting the data service with demo data** to see
 - fetchChromSizes and bedToBigBed (you can install these binaries built from [http://hgdownload.cse.ucsc.edu/admin/exe/](http://hgdownload.cse.ucsc.edu/admin/exe/) 
 - nucleserver ([https://github.com/nucleome/nucleserver](https://github.com/nucleome/nucleserver)), this tutorial is tested under nucleserver version 0.2.6
 
+<a name="getdata"/>
 ## Getting data from GEO (Linux and macOS)
 First, Open terminal in Linux or macOS.
 Then, create a new folder ans use `wget` command to download the whole dataset from GEO to a local computer and named it `GSE80280_RAW.tar` as shown below: 
@@ -43,7 +54,7 @@ cd single_cell_hic
 # Download data
 wget -O GSE80280_RAW.tar "https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE80280&format=file"
 ```
-Warning: Note that this will download a large single file of about 20Gb.
+> Warning: Note that this will download a large single file of about 20Gb.
 
 Next, you need to extract files from the tar file in the current directory:
 
@@ -55,16 +66,17 @@ gzip -d *.gz
 
 You should see multiple files in different formats with various suffixes, such as .bed, .pdb, etc as shown below.
 
-Warning: Note that the folder will take about 43Gb after uncompression. 
+> Warning: Note that the folder will take about 43Gb after uncompression. 
 
 ![list of files after uncompression](./asset/figure_list_file.png)
 
+<a name="preprocessing_chip"/>
 ## Pre-processing of ChIP-seq peaks
 In order to launch data service and visualize these data in Nucleome Browser, you need to pre-process data and convert them into standard formats (e.g., bigBed and bigWig file) supported by Nucleome Browser. 
 You can do that using the tools fetchChromSizes and bedToBigBed provided from the UCSC Genome Browser and Blat application binaries built ([http://hgdownload.cse.ucsc.edu/admin/exe](http://hgdownload.cse.ucsc.edu/admin/exe/)) as shown below.
 We also provide binary executables inside the *script* folder.
 
-Tips: You need to make fetchChromSizes and bigToBigBed executable using the command chmod (e.g., chmod +x bedToBigBed).
+> Tips: You need to make fetchChromSizes and bigToBigBed executable using the command chmod (e.g., chmod +x bedToBigBed).
 
 You can then use the following script to convert ChIP-seq peak bed file into bigBed file. 
 You should replace `ChIP-Seq_peaks.bed` with path of actual sample file such as `/work/project/Tutorial-singleCellHiC/single_cell_hic/GSM2123550_H3K4me3_hapmESC_peaks.bed`.
@@ -81,7 +93,7 @@ awk '{print $1"\t"$2"\t"$3"\t"$4"\t0\t.\t"$2"\t"$3"\t255,0,0"}' ChIP-Seq_peaks.b
 bedToBigBed ChIP-Seq_peaks.detail.bed mm10.chrom.sizes ChIP-Seq_peaks.bb
 ```
 
-Tips: You can use for loop to efficiently convert multiple files at the same time. For example, the following commands will process all peaks inside folder `single_cell_hic`.
+> Tips: You can use for loop to efficiently convert multiple files at the same time. For example, the following commands will process all peaks inside folder `single_cell_hic`.
 
 ```
 for file in single_cell_hic/*.bed
@@ -91,6 +103,7 @@ do
 done
 ```
 
+<a name="preprocessing_hic"/>
 ## Pre-processing of population Hi-C and single-cell Hi-C data
 The Hi-C contact maps must be transformed into .hic format in order to display in Nucleome Browser. 
 Here we suggest using Juicer tools ([https://github.com/aidenlab/juicer](https://github.com/aidenlab/juicer)) to create .hic files from the downloaded contact pair files. 
@@ -107,7 +120,7 @@ To do that, the Hi-C contact pair file should be first converted into one of the
 
 We provide customized script named `create_single_cell_HiC.sh` to convert population/single-cell Hi-C contact pairs to .hic files as shown below:
 
-Tips: you may need to make `create_single_cell_HiC.sh` excecutable using `chmod +x scripts/create_single_cell_HiC.sh`.
+> Tips: you may need to make `create_single_cell_HiC.sh` excecutable using `chmod +x scripts/create_single_cell_HiC.sh`.
 
 ```
 # Single cell Hi-C
@@ -117,7 +130,7 @@ Tips: you may need to make `create_single_cell_HiC.sh` excecutable using `chmod 
 ./scripts/create_population_HiC.sh GSM2123564_Haploid_mESC_population_hic.txt population_hic /path_to_juicer_tools/juicer_tools.jar
 ```
 
-Tips: These two scripts also require an additional file called `chr_order` which specifies the list of chromosomes ID. We also provide this file in this repo.
+> Tips: These two scripts also require an additional file called `chr_order` which specifies the list of chromosomes ID. We also provide this file in this repo.
 
 ## Pre-processing of 3D genome structures
 The 3D genome structures for single cells are provided in pdb format, and you will need to convert them into nucle3d ([https://github.com/nucleome/nucle3d](https://github.com/nucleome/nucle3d)) format.
@@ -132,7 +145,8 @@ Note that this script can only apply to this specific dataset, and can not be us
 ./pdb2Nucle3d.sh Cell_X_genome_structure_model.pdb Cell_X
 ```
 
-## Starting the data service 
+<a name="start_data"/>
+## Starting data service 
 
 Now, you should have prepared all the data for visualization in Nucleome Browser.
 Next, you need to prepare a configuration file to start a data service so that Nucleome Browser can display these datasets. 
@@ -149,7 +163,7 @@ You should replace the path with the real path based on your computer.
 
 ![Config sheet](./asset/configuration_config_sheet.png)
 
-Tips: You can use the pwd command in Linux and macOS to find the complete path of the current folder.
+> Tips: You can use the pwd command in Linux and macOS to find the complete path of the current folder.
 
 Next, you need to create another sheet called `Index` and put in the following information.
 
@@ -191,7 +205,7 @@ If you see the `Status` column showing active after you click the `update` butto
 
 ![Manually add a local data service](./asset/Load_data_server_manually.png)
 
-Tips: You must use the HTTPS version of Nucleome Browser ([https://vis.nucleome.org](https://vis.nucleome.org)) to load a local data service. 
+> Tips: You must use the HTTPS version of Nucleome Browser ([https://vis.nucleome.org](https://vis.nucleome.org)) to load a local data service. 
 The HTTP version will not work due to the limitation of CORS restriction.
 
 To add the 3D structure to Nucleome Browser, you also need to start a local data service.
@@ -208,7 +222,8 @@ Then, you can create a new 3D structure panel in the Nucleome Browser and copy t
 
 ![Add new 3D data](./asset/3d_data_service.png)
 
-## Starting the data service using the demo data
+<a name="start_demo"/>
+## Starting data service using the demo data
 We have provided a demo data set (only Hi-C data on chromosome 19 is included to reduce data size) and corresponding excel configuration file to directly launch a local data service and explore features in Nucleome Browser.
 
 First, you need to open a terminal in Linux or macOS and get the complete path of the current folder.
@@ -221,7 +236,7 @@ Next, you can start a data service using the following command in the terminal.
 ./script/nucleserver start -i demo_data/single_cell_demo.xlsx
 ```
 
-Tips: You need to make nucleserver executable using the command chmod (e.g., chmod +x bedToBigBed).
+> Tips: You need to make nucleserver executable using the command chmod (e.g., chmod +x bedToBigBed).
 
 Then, open another terminal and use the following command to start another data service to host the 3D genome structure models. 
 
@@ -251,6 +266,7 @@ You can also see the following video tutorials for different operating systems.
 
 ### macOS machine video tutorial
 
+<a name="others"/>
 ## Citation
 
 ## Reference 
