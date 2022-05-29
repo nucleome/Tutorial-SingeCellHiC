@@ -4,7 +4,7 @@ This tutorial will show you how to set up a custom Nucleome Browser session.
 You will learn how to pre-processe publised data (e.g., population Hi-C and single-cell Hi-C from Stevens et al. 2017) and lauch a local genomic data service and local 3D genome structure service for visualization in Nucleome Browser.
 You can follow this tutorial by cloning this repo. 
 We also provide a list of demo data and configuration file under the folder named `demo_data`
-You can jump to the section named **Starting the data service with demo data** if you just want to know how to set up a local data service in your computer and visualize tracks on Nucleome Browser. 
+You can jump to the section named [Starting the data service with demo data](#start_demo) if you just want to know how to set up a local data service in your computer and visualize tracks on Nucleome Browser. 
 
 ## Table of Contents
 1. [Requirements](#requirements)
@@ -41,7 +41,7 @@ You can go the section named **Starting the data service with demo data** to see
 - fetchChromSizes and bedToBigBed (you can install these binaries built from [http://hgdownload.cse.ucsc.edu/admin/exe/](http://hgdownload.cse.ucsc.edu/admin/exe/) 
 - nucleserver ([https://github.com/nucleome/nucleserver](https://github.com/nucleome/nucleserver)), this tutorial is tested under nucleserver version 0.2.6
 
-### maxOS (tested under macOS 12 (Monterey))
+### macOS (tested under macOS 12 (Monterey))
 - gzip 
 - tar
 - gawk 
