@@ -44,6 +44,9 @@ You can go the section named [Starting the data service with demo data](#start_d
 - nucleserver ([https://github.com/nucleome/nucleserver](https://github.com/nucleome/nucleserver)), this tutorial is tested under nucleserver version 0.2.6
 
 Most of tools except for the Juicer Tools, fetchChromSizes, and bedToBigBed should be pre-installed for most Linux distributions. 
+You also need to download the right version of nucleserver ([https://github.com/nucleome/nucleserver/releases](https://github.com/nucleome/nucleserver/releases)) based on your machine operating system. 
+For Linux, you can get that information by typing `dpkg --print-architecture` in ther terminal.
+Here, we download nucleserver and put it under the `scripts` folder.
 
 ### macOS (tested under macOS 12 (Monterey))
 - terminal 
@@ -54,6 +57,10 @@ Most of tools except for the Juicer Tools, fetchChromSizes, and bedToBigBed shou
 - Juicer Tools ([https://github.com/aidenlab/juicer/wiki/Download](https://github.com/aidenlab/juicer/wiki/Download)), this tutorial is tested under Juicer Tool version 1.22.01
 - fetchChromSizes and bedToBigBed (you can install these binaries built from [http://hgdownload.cse.ucsc.edu/admin/exe/](http://hgdownload.cse.ucsc.edu/admin/exe/), we also provided them in the `scripts` folder (e.g., `UCSC_Linux`)
 - nucleserver ([https://github.com/nucleome/nucleserver](https://github.com/nucleome/nucleserver)), this tutorial is tested under nucleserver version 0.2.6
+
+Most of tools except for the Juicer Tools, fetchChromSizes, and bedToBigBed should be pre-installed for most Linux distributions.
+For macOS, you can get that information by typing `set | grep "MACHTYPE"` in the terminal. 
+Here, we download nucleserver and put it under the `scripts` folder.
 
 > Tips: In macOS, you can open terminal by clicking the Launchpad icon in the Dock, typing terminal in the search field, then click `Terminal`.
 
@@ -255,7 +262,13 @@ You can see the following video tutorials for different operating systems and th
 First, you need to open a terminal in Linux or macOS and get the complete path of the current folder.
 In Linux and macOS, this can be done using the `pwd` command. 
 Importantly, you need to open the configuration file in the `demo_data` folder and put the complete path of the current folder into the B2 cell of the `Config` sheet.
-Next, you can start a data service using the following command in the terminal.
+
+Next, you need to download the right version of nucleserver ([https://github.com/nucleome/nucleserver/releases](https://github.com/nucleome/nucleserver/releases)) based on your machine operating system. 
+For macOS, you can get that information by typing `set | grep "MACHTYPE"` in the terminal. 
+For Linux, you can get that information by typing `dpkg --print-architecture` in ther terminal.
+For Windows, we only has version for AMD64, which should work for most of Windows machines.
+Here, we download nucleserver and put it under the `scripts` folder.
+Then, you can start a data service using the following command in the terminal.
 
 ```
 # make nucleserver executable using chmod
