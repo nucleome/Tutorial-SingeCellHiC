@@ -59,6 +59,7 @@ Here, we download nucleserver and put it under the `scripts` folder.
 - nucleserver ([https://github.com/nucleome/nucleserver](https://github.com/nucleome/nucleserver)), this tutorial is tested under nucleserver version 0.2.6
 
 Most of tools except for the Juicer Tools, fetchChromSizes, and bedToBigBed should be pre-installed for most Linux distributions.
+You also need to download the right version of nucleserver ([https://github.com/nucleome/nucleserver/releases](https://github.com/nucleome/nucleserver/releases)) based on your machine operating system. 
 For macOS, you can get that information by typing `set | grep "MACHTYPE"` in the terminal. 
 Here, we download nucleserver and put it under the `scripts` folder.
 
