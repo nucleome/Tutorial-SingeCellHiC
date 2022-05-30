@@ -225,7 +225,7 @@ If you see the `Status` column showing active after you click the `update` butto
 ![Manually add a local data service](./asset/Load_data_server_manually.png)
 
 > Tips: You must use the HTTPS version of Nucleome Browser ([https://vis.nucleome.org](https://vis.nucleome.org)) to load a local data service. 
-The HTTP version will not work due to the limitation of CORS restriction.
+The HTTP version will not work due to the limitation of cross-origin resource sharing (CORS) restriction.
 
 To add the 3D structure to Nucleome Browser, you also need to start a local data service.
 You can use any file server to host nucle3D files but we also provide a simple one in nucleserver.
