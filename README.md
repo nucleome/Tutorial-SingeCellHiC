@@ -49,7 +49,7 @@ Most of tools except for the Juicer Tools, fetchChromSizes, and bedToBigBed shou
 - terminal 
 - gzip 
 - tar
-- gawk 
+- awk (mawk/gawk should also work)
 - sed
 - Juicer Tools ([https://github.com/aidenlab/juicer/wiki/Download](https://github.com/aidenlab/juicer/wiki/Download)), this tutorial is tested under Juicer Tool version 1.22.01
 - fetchChromSizes and bedToBigBed (you can install these binaries built from [http://hgdownload.cse.ucsc.edu/admin/exe/](http://hgdownload.cse.ucsc.edu/admin/exe/), we also provided them in the `scripts` folder (e.g., `UCSC_Linux`)
