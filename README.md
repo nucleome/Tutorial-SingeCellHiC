@@ -160,7 +160,7 @@ Note that this script can only apply to this specific dataset, and can not be us
 
 ```
 # pdb to Nucle3d, replace Cell_X_genome_structure_model.pdb with real file, e.g., GSM2219497_Cell_1_genome_structure_model.pdb
-./pdb2Nucle3d.sh Cell_X_genome_structure_model.pdb Cell_X
+./scripts/pdb2Nucle3d.sh Cell_X_genome_structure_model.pdb Cell_X
 ```
 
 <a name="start_data"/>
@@ -208,7 +208,7 @@ Finally, you can start a data service using nucleserver with the excel configura
 
 ```
 # by default, data service will start with port 8611
-./script/nucleserver start -i nucleser_config.xlsx
+./scripts/nucleserver start -i nucleser_config.xlsx
 ```
 
 You should see the following logging information indicating that data service is successfully created.
@@ -233,7 +233,7 @@ You can start a file server to host 3D genome structure models using the followi
 
 ```
 # Start a file server to host 3D genome structure models
-./script/nucleserver file --root NB_single_cell/3d/ --port 8612
+./scripts/nucleserver file --root NB_single_cell/3d/ --port 8612
 ```
 
 This will start a data service showing 3D structure file at `http://127.0.0.1:8612/get`. 
@@ -258,16 +258,18 @@ Importantly, you need to open the configuration file in the `demo_data` folder a
 Next, you can start a data service using the following command in the terminal.
 
 ```
+# make nucleserver executable using chmod
+chmod +x ./scripts/nucleserver
 # by default, data service will start with port 8611
-./script/nucleserver start -i demo_data/single_cell_demo.xlsx
+./scripts/nucleserver start -i demo_data/single_cell_demo.xlsx
 ```
 
-> Tips: You need to make nucleserver executable using the command chmod (e.g., chmod +x bedToBigBed).
+> Tips: You need to make nucleserver executable using the command chmod (e.g., chmod +x nucleserver).
 
 Then, open another terminal and use the following command to start another data service to host the 3D genome structure models. 
 
 ```
-./script/nucleserver file --root demo_data/3d/ --port 8612
+./scripts/nucleserver file --root demo_data/3d/ --port 8612
 ```
 
 Finally, open a web browser (Google Chrome or Safari browser), and go to [https://vis.nucleome.org](https://vis.nucleome.org).
