@@ -254,7 +254,7 @@ Then, you can create a new 3D structure panel in the Nucleome Browser and copy t
 ## Starting data service using the demo data
 We have provided a demo data set (only Hi-C data on chromosome 19 is included to reduce data size) and corresponding excel configuration file to directly launch a local data service and explore features in Nucleome Browser.
 
-You can see the following video tutorials for different operating systems and the below text version for reference.
+You can see the following video tutorials for different operating systems and use the following text for reference.
 
 - Linux machine video tutorial ()
 - macOS machine video tutorial ()
@@ -269,6 +269,8 @@ For Linux, you can get that information by typing `dpkg --print-architecture` in
 For Windows, we only has version for AMD64, which should work for most of Windows machines.
 Here, we download nucleserver and put it under the `scripts` folder.
 Then, you can start a data service using the following command in the terminal.
+
+> Tips: You may need to allow macOS to run nucleserver by opening the Apple menu > System Preferences > Security & Privacy > General tab and select allow nucleserver to run on your computer.
 
 ```
 # make nucleserver executable using chmod
@@ -299,7 +301,7 @@ Then, you can create a new 3D structure panel in the Nucleome Browser and copy t
 
 ![Add new 3D data](./asset/3d_data_service.png)
 
-Note that you need to go to chromosome 19 as only this chromosome has Hi-C contact map data.
+> Important!!! Note that you must to go to chromosome 19 to view Hi-C contact maps as only this chromosome has Hi-C contact map in the demo data.
 
 <a name="others"/>
 
