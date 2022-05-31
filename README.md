@@ -262,7 +262,11 @@ You can see the following video tutorials for different operating systems and us
 
 First, you need to open a terminal in Linux or macOS and get the complete path of the current folder.
 In Linux and macOS, this can be done using the `pwd` command. 
-Importantly, you need to open the configuration file in the `demo_data` folder and put the complete path of the current folder into the B2 cell of the `Config` sheet.
+Importantly, you need to open the configuration file in the `demo_data` folder and put the complete path of the current folder into the **B2** cell of the `Config` sheet as shown below
+
+![Config sheet with the right complete path of the root directory](./asset/configuration_config_sheet.png)
+
+> Tips: Do not forget to save the configuration file
 
 Next, you need to download the right version of nucleserver ([https://github.com/nucleome/nucleserver/releases](https://github.com/nucleome/nucleserver/releases)) based on your machine operating system. 
 For macOS, you can get that information by typing `set | grep "MACHTYPE"` in the terminal. 
