@@ -257,8 +257,8 @@ We have provided a demo data set (only Hi-C data on chromosome 19 is included to
 
 You can see the following video tutorials for different operating systems and use the following text for reference.
 
-- Linux machine video tutorial ()
-- macOS machine video tutorial ()
+- Linux machine video tutorial ([https://youtu.be/FIEYzSO0G8g](https://youtu.be/FIEYzSO0G8g))
+- macOS machine video tutorial ([https://youtu.be/ej1uiDr5usg](https://youtu.be/ej1uiDr5usg))
 
 First, you need to open a terminal in Linux or macOS and get the complete path of the current folder.
 In Linux and macOS, this can be done using the `pwd` command. 
